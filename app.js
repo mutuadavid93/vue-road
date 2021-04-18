@@ -4,7 +4,9 @@ const app = Vue.createApp({
     // data function always returns an Object
     return {
       // All properties here can only be accessed in the area are Vue controlled
-      courseGoal: "Finish Vue first then learn Nuxt!",
+      courseGoal: "Finish the course and learn vue!",
+      courseGoal1: "Finish Vue first then learn Nuxt!",
+      courseGoal2: "Master Vue and build amazing enterprise apps",
       vueLink: "https://vuejs.org/",
     };
   },
@@ -13,7 +15,9 @@ const app = Vue.createApp({
   methods: {
     outputGoal() {
       const score = Math.random();
-      const decision = score < 0.5 ? "Learn vue!" : "Master vue!";
+
+      // `this` keyword represents the entire Vue 'app' instance's returned data
+      const decision = score < 0.5 ? this.courseGoal1 : this.courseGoal2;
       return decision;
     },
   },
