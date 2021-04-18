@@ -8,6 +8,15 @@ const app = Vue.createApp({
       vueLink: "https://vuejs.org/",
     };
   },
+
+  // All methods live here
+  methods: {
+    outputGoal() {
+      const score = Math.random();
+      const decision = score < 0.5 ? "Learn vue!" : "Master vue!";
+      return decision;
+    },
+  },
 });
 
 // NB :: If we control and HTML element with Vue, we'll also control all child
