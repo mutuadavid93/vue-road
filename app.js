@@ -5,6 +5,7 @@ const app = Vue.createApp({
     return {
       // All properties here can only be accessed in the area are Vue controlled
       courseGoal: "Finish Vue first then learn Nuxt!",
+      vueLink: "https://vuejs.org/",
     };
   },
 });
