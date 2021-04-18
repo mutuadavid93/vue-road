@@ -18,9 +18,14 @@
     </header>
     <section id="events">
       <h2>Events in Action</h2>
-      <button v-on:click="counter++">Add</button>
-      <button v-on:click="counter--">Subtract</button>
+      <button v-on:click="increment(10)">Add 10</button>
+      <!-- Invokation work less the parenthesis too e.g. decrement below -->
+      <button v-on:click="decrement(5)">Subtract 5</button>
       <p>Result: {{ counter }}</p>
+
+      <!-- `$event` is a preserved keyword to expose default event argument  -->
+      <input type="text" v-on:input="setName($event, 'Mackenzie')" />
+      <p>Your name is {{ name }}</p>
     </section>
   </body>
 </html>
