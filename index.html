@@ -19,13 +19,27 @@
     <section id="events">
       <h2>Events in Action</h2>
       <button v-on:click="increment(10)">Add 10</button>
-      <!-- Invokation work less the parenthesis too e.g. decrement below -->
+      <!-- Invokation work less the parenthesis too if no params are passed -->
       <button v-on:click="decrement(5)">Subtract 5</button>
       <p>Result: {{ counter }}</p>
 
-      <!-- `$event` is a preserved keyword to expose default event argument  -->
-      <input type="text" v-on:input="setName($event, 'Mackenzie')" />
+      <!-- 
+        - `$event` is a preserved keyword to expose default event argument  
+        - event modifiers e.g. enter, right/middle/left, stop/prevent e.t.c
+        i.e. <eventName>.<modifier> e.g. keyup.enter
+      -->
+      <input
+        type="text"
+        v-on:input="setName($event, 'Mackenzie')" 
+        v-on:keyup.enter="confirmInput"
+      />
       <p>Your name is {{ name }}</p>
+      <p>Update On Enter Key :: {{ confirmName }}</p>
+
+      <form v-on:submit.prevent="submitForm">
+        <input type="text" id="form-input" />
+        <button>Sign up</button>
+      </form>
     </section>
   </body>
 </html>
