@@ -30,7 +30,7 @@
       -->
       <input
         type="text"
-        v-on:input="setName($event, 'Mackenzie')" 
+        v-on:input="setName($event, 'Mackenzie')"
         v-on:keyup.enter="confirmInput"
       />
       <p>Your name is {{ name }}</p>
@@ -38,10 +38,9 @@
 
       <!-- 
         - Vue re-executes any non-event bound method invoked inside the vue 
-        controlled parent element. e.g. outPutFullName() below whenever data 
-        properties change
+        controlled parent element
       -->
-      <p>New name is {{outPutFullName()}}</p>
+      <p>New name is {{fullname}}</p>
 
       <form v-on:submit.prevent="submitForm">
         <input type="text" id="form-input" />
