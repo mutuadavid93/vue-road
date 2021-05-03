@@ -36,6 +36,13 @@
       <p>Your name is {{ name }}</p>
       <p>Update On Enter Key :: {{ confirmName }}</p>
 
+      <!-- 
+        - Vue re-executes any non-event bound method invoked inside the vue 
+        controlled parent element. e.g. outPutFullName() below whenever data 
+        properties change
+      -->
+      <p>New name is {{outPutFullName()}}</p>
+
       <form v-on:submit.prevent="submitForm">
         <input type="text" id="form-input" />
         <button>Sign up</button>

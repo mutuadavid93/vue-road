@@ -23,6 +23,12 @@ const app = Vue.createApp({
     confirmInput() {
       this.confirmName = this.name;
     },
+
+    outPutFullName() {
+      console.log("Running again!!");
+      if (this.name === "") return "";
+      return this.name + " " + "Ericksen";
+    },
   },
 });
 
