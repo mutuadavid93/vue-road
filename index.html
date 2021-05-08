@@ -14,44 +14,29 @@
   </head>
   <body>
     <header>
-      <h1>Vue Events</h1>
+      <h1>Vue Dynamic Styling</h1>
     </header>
-    <section id="events">
-      <h2>Events in Action</h2>
-      <button @click="increment(10)">Add 10</button>
-      <!-- Invokation work less the parenthesis too if no params are passed -->
-      <button v-on:click="decrement(5)">Subtract 5</button>
-      <p>Result: {{ counter }}</p>
-
-      <!-- 
-        - `$event` is a preserved keyword to expose default event argument  
-        - event modifiers e.g. enter, right/middle/left, stop/prevent e.t.c
-        i.e. <eventName>.<modifier> e.g. keyup.enter
-      -->
-      <input
-        type="text"
-        v-on:input="setName($event, 'Mackenzie')"
-        v-on:keyup.enter="confirmInput"
-      />
-      <p>Your name is {{ name }}</p>
-      <p>Update On Enter Key :: {{ confirmName }}</p>
-
-      <!-- 
-        - Vue re-executes any non-event bound method invoked inside the vue 
-        controlled parent element
-      -->
-      <p>New name is {{fullname}}</p>
-
-      <p>A watched name :: {{name}}</p>
-
-      <!-- Two way data-binding -->
-      <input v-model="hypedname" />
-      <p>SAM :: {{hypedName}}</p>
-
-      <form v-on:submit.prevent="submitForm">
-        <input type="text" id="form-input" />
-        <button>Sign up</button>
-      </form>
+    <section id="styling">
+      {{/* 
+        - Bind classes dynamically using truthy values i.e. true/false
+        - Vue combines your static classes e.g. demo with dynamic bound ones
+      */}}
+      <div
+        class="demo"
+        :class="{active:boxASelected}"
+        @click="boxSelected('A')"
+        :style="{'border-color':boxASelected ? 'red' : '#ccc'}"
+      ></div>
+      <div
+        class="demo"
+        :class="{active:boxBSelected}"
+        @click="boxSelected('B')"
+      ></div>
+      <div
+        class="demo"
+        :class="{active:boxCSelected}"
+        @click="boxSelected('C')"
+      ></div>
     </section>
   </body>
 </html>
