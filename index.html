@@ -18,14 +18,23 @@
     </header>
     <section id="user-goals">
       <h2>My course goals</h2>
-      <input type="text" v-model="enteredGoal"/>
+      <input type="text" v-model="enteredGoal" />
       <button @click="addGoal">Add Goal</button>
       {{/* Display below Paragraph and it's contents if there no goals */}}
-      <p v-if="goals.length===0">No goals have been added yet - please start adding some!</p>
+      <p v-if="goals.length===0">
+        No goals have been added yet - please start adding some!
+      </p>
 
       {{/* NB: v-else directive can only be used on an immediate sibling! */}}
       <ul v-else>
-        <li>Goal</li>
+        <li v-for="(goal,index) in goals">{{index}} - {{goal}}</li>
+      </ul>
+
+      {{/* v-for can as well iterate over objects */}}
+      <ul>
+        <li v-for="(value, key, index) in {name:'Khim', age:53}">
+          {{index}} - {{key}} is {{value}}
+        </li>
       </ul>
     </section>
   </body>
