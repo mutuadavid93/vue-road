@@ -18,10 +18,13 @@
     </header>
     <section id="user-goals">
       <h2>My course goals</h2>
-      <input type="text" />
-      <button>Add Goal</button>
-      <p>No goals have been added yet - please start adding some!</p>
-      <ul>
+      <input type="text" v-model="enteredGoal"/>
+      <button @click="addGoal">Add Goal</button>
+      {{/* Display below Paragraph and it's contents if there no goals */}}
+      <p v-if="goals.length===0">No goals have been added yet - please start adding some!</p>
+
+      {{/* NB: v-else directive can only be used on an immediate sibling! */}}
+      <ul v-else>
         <li>Goal</li>
       </ul>
     </section>
