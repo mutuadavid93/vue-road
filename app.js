@@ -1,24 +1,18 @@
 const app = Vue.createApp({
   data() {
     return {
-      boxASelected: false,
-      boxBSelected: false,
-      boxCSelected: false,
+      enteredGoal: "",
+      goals: [],
     };
   },
-
   methods: {
-    boxSelected(box) {
-      if (box === "A") {
-        // Toggle the behavior by negating it based on the current truthy value
-        this.boxASelected = !this.boxASelected;
-      } else if (box === "B") {
-        this.boxBSelected = !this.boxBSelected;
-      } else {
-        this.boxCSelected = !this.boxCSelected;
-      }
+    addGoal() {
+      this.goals.push(this.enteredGoal);
+    },
+    removeGoal(index) {
+      this.goals.splice(index, 1);
     },
   },
 });
 
-app.mount("#styling");
+app.mount("#user-goals");
