@@ -14,26 +14,42 @@
   </head>
   <body>
     <header>
-      <h1>Vue Course Goals</h1>
+      <h1>Monster Slayer</h1>
     </header>
-    <section id="user-goals">
-      <h2>My course goals</h2>
-      <input type="text" v-model="enteredGoal" />
-      <button @click="addGoal">Add Goal</button>
-      {{/* Display below Paragraph and it's contents if there no goals */}}
-      <p v-if="goals.length===0">
-        No goals have been added yet - please start adding some!
-      </p>
+    <div id="game">
+      <section id="monster" class="container">
+        <h2>Monster Health</h2>
+        <div class="healthbar">
+          <div class="healthbar__value" :style="monsterHealthBarStyles"></div>
+        </div>
+      </section>
+      <section id="player" class="container">
+        <h2>Your Health</h2>
+        <div class="healthbar">
+          <div class="healthbar__value" :style="playerHealthBarStyles"></div>
+        </div>
+      </section>
 
-      {{/* NB: v-else directive can only be used on an immediate sibling! */}}
-      <ul v-else>
-        <li v-for="(goal,index) in goals" @click="removeGoal(index)" :key="goal">
-          <p>{{index}} - {{goal}}</p>
+      <section class="container" v-if="winner">
+        <h2>Game Over!</h2>
+        <h3 v-if="winner === 'monster'">You Lost!</h3>
+        <h3 v-else-if="winner === 'player'">You won!</h3>
+        <h3 v-else>It's a Draw!</h3>
+        <button @click="startNewGame">Start New Game</button>
+      </section>
 
-          {{/* Stop propagation */}}
-          <input type="text" @click.stop/>
-        </li>
-      </ul>
-    </section>
+      <section id="controls" v-else>
+        <button @click="attackMonster">ATTACK</button>
+        <button :disabled="mayUseSpecialAttack" @click="launchSpecialAttack">
+          SPECIAL ATTACK
+        </button>
+        <button @click="healPlayer">HEAL</button>
+        <button @click="surrender">SURRENDER</button>
+      </section>
+      <section id="log" class="container">
+        <h2>Battle Log</h2>
+        <ul></ul>
+      </section>
+    </div>
   </body>
 </html>
