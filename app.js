@@ -8,10 +8,12 @@ const app = Vue.createApp({
     return {
       monsterHealth: 100,
       playerHealth: 100,
+      currentRound: 0,
     };
   },
   methods: {
     attackMonster() {
+      this.currentRound++;
       // Deal a damage which is a random whole number between 5 and 12 i.e.
       // Minimum and Maximum
       this.monsterHealth -= getRandomValue(5, 12);
@@ -22,6 +24,22 @@ const app = Vue.createApp({
     attackPlayer() {
       this.playerHealth -= getRandomValue(5, 18);
     },
+    launchSpecialAttack() {
+      this.currentRound++;
+      const hugeDamage = getRandomValue(10, 25);
+      this.monsterHealth -= hugeDamage;
+      this.attackPlayer(); // monster attacks back too
+    },
+    healPlayer() {
+      this.currentRound++;
+      const healValue = getRandomValue(8, 20);
+      console.log(healValue, this.playerHealth, this.playerHealth + healValue);
+      const healed = this.playerHealth + healValue > 100;
+      healed ? (this.playerHealth = 100) : (this.playerHealth += healValue);
+
+      // As player heals can as well be attacked
+      this.attackPlayer();
+    },
   },
   computed: {
     monsterHealthBarStyles() {
@@ -29,6 +47,9 @@ const app = Vue.createApp({
     },
     playerHealthBarStyles() {
       return { width: this.playerHealth + "%" };
+    },
+    mayUseSpecialAttack() {
+      return this.currentRound % 3 !== 0;
     },
   },
 });
