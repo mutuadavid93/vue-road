@@ -13,6 +13,13 @@ const app = Vue.createApp({
     };
   },
   methods: {
+    startNewGame() {
+      // Reset all state props to defaults
+      this.monsterHealth = 100;
+      this.playerHealth = 100;
+      this.currentRound = 0;
+      this.winner = null;
+    },
     attackMonster() {
       this.currentRound++;
       // Deal a damage which is a random whole number between 5 and 12 i.e.
@@ -41,12 +48,17 @@ const app = Vue.createApp({
       // As player heals can as well be attacked
       this.attackPlayer();
     },
+    surrender() {
+      this.winner = "monster";
+    },
   },
   computed: {
     monsterHealthBarStyles() {
+      if (this.monsterHealth <= 0) return { width: "0%" };
       return { width: this.monsterHealth + "%" };
     },
     playerHealthBarStyles() {
+      if (this.playerHealth <= 0) return { width: "0%" };
       return { width: this.playerHealth + "%" };
     },
     mayUseSpecialAttack() {
