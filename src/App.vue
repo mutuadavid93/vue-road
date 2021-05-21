@@ -1,9 +1,38 @@
+<template>
+  <section>
+    <header><h3>My Friends</h3></header>
+    <ul>
+      <friend-contact></friend-contact>
+      <friend-contact></friend-contact>
+    </ul>
+  </section>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      friends: [
+        {
+          id: 1,
+          name: "Street Money",
+          phone: "+254 792 056 402",
+          email: "istreetec@gmail.com",
+        },
+      ],
+    };
+  },
+};
+</script>
+
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Jost&display=swap");
 * {
   box-sizing: border-box;
 }
 
 html {
-  font-family: 'Jost', sans-serif;
+  font-family: "Jost", sans-serif;
 }
 
 body {
@@ -61,3 +90,4 @@ header {
   border-color: #ec3169;
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.26);
 }
+</style>
