@@ -2,8 +2,18 @@
   <section>
     <header><h3>My Friends</h3></header>
     <ul>
-      <friend-contact></friend-contact>
-      <friend-contact></friend-contact>
+      <friend-contact
+        name="Yao Ming"
+        phone-number="+254 792 056 402"
+        email-address="yao@gmail.com"
+        is-favorite="1"
+      ></friend-contact>
+      <friend-contact
+        name="Gin Ping"
+        phone-number="+254 792 056 402"
+        email-address="ping@gmail.com"
+        is-favorite="0"
+      ></friend-contact>
     </ul>
   </section>
 </template>
