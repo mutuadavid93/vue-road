@@ -3,15 +3,12 @@
     <header><h3>My Friends</h3></header>
     <ul>
       <friend-contact
-        name="Yao Ming"
-        phone-number="+254 792 056 402"
-        email-address="yao@gmail.com"
-        is-favorite="1"
-      ></friend-contact>
-      <friend-contact
-        name="Gin Ping"
-        phone-number="+254 792 056 402"
-        email-address="ping@gmail.com"
+        v-for="friend in friends"
+        :key="friend.id"
+        :name="friend.name"
+        :phone-number="friend.phone"
+        :email-address="friend.email"
+        :is-favorite="true"
       ></friend-contact>
     </ul>
   </section>
@@ -25,6 +22,12 @@ export default {
         {
           id: 1,
           name: "Street Money",
+          phone: "+254 792 056 402",
+          email: "istreetec@gmail.com",
+        },
+        {
+          id: 1,
+          name: "Yao Money",
           phone: "+254 792 056 402",
           email: "istreetec@gmail.com",
         },
