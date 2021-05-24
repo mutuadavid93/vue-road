@@ -12,7 +12,6 @@
         name="Gin Ping"
         phone-number="+254 792 056 402"
         email-address="ping@gmail.com"
-        is-favorite="0"
       ></friend-contact>
     </ul>
   </section>
