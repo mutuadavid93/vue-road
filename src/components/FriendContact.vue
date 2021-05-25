@@ -1,7 +1,7 @@
 <template>
   <li>
     <h2 @click="toggleFavorite">
-      {{ name }} {{ favoriteFriend ? "(Favorite)" : "" }}
+      {{ name }} {{ isFavorite ? "(Favorite)" : "" }}
     </h2>
     <button @click="toggleDetails">
       {{ detailsVisible ? "Hide" : "Show" }} Details
@@ -23,6 +23,7 @@ export default {
   //
   // We can as well validate props we are expecting to receive
   props: {
+    id: { type: Number, required: true },
     name: { type: String, required: true },
     phoneNumber: { type: String, required: true },
     emailAddress: { type: String, required: true },
@@ -38,9 +39,6 @@ export default {
   data() {
     return {
       detailsVisible: false,
-      // Instead create new property inside the component which needs to mutate
-      // the data after pointing a prop from Parent component to it
-      favoriteFriend: this.isFavorite,
     };
   },
   methods: {
@@ -48,7 +46,9 @@ export default {
       this.detailsVisible = !this.detailsVisible;
     },
     toggleFavorite() {
-      this.favoriteFriend = !this.favoriteFriend;
+      // You can use $emit() to emit events from Child to Parent component.
+      // It emits your custom events which can be listened on the parent
+      this.$emit("toggle-favorite", this.id);
     },
   },
 };
