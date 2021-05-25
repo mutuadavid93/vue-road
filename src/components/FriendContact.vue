@@ -10,6 +10,9 @@
       <li><strong>Phone:</strong> {{ phoneNumber }}</li>
       <li><strong>Email:</strong> {{ emailAddress }}</li>
     </ul>
+    <button @click="$emit('deletecontact', id)" :title="'Remove ' + name">
+      x
+    </button>
   </li>
 </template>
 
@@ -23,7 +26,7 @@ export default {
   //
   // We can as well validate props we are expecting to receive
   props: {
-    id: { type: Number, required: true },
+    id: { type: String, required: true },
     name: { type: String, required: true },
     phoneNumber: { type: String, required: true },
     emailAddress: { type: String, required: true },
@@ -36,6 +39,8 @@ export default {
     },
   },
 
+  // Validating events that the this child component will emit at some point.
+  emits: ["toggle-favorite", "deletecontact"],
   data() {
     return {
       detailsVisible: false,
