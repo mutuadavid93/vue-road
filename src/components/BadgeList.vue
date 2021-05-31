@@ -1,14 +1,16 @@
 <template>
   <badge-card>
-    <h2>Available Badges</h2>
-    <ul>
-      <li>
-        <base-badge type="admin" caption="ADMIN"></base-badge>
-      </li>
-      <li>
-        <base-badge type="author" caption="AUTHOR"></base-badge>
-      </li>
-    </ul>
+    <!-- `#` is the shorthand for v-slot directive-->
+    <template #header> <h2>Available Badges</h2></template>
+    <template #default>
+      <ul>
+        <li>
+          <base-badge type="admin" caption="ADMIN"></base-badge>
+        </li>
+        <li>
+          <base-badge type="author" caption="AUTHOR"></base-badge>
+        </li></ul
+    ></template>
   </badge-card>
 </template>
 
