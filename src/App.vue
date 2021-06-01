@@ -15,8 +15,13 @@
 
     <!-- Instead use Dynamic components 
       NB:: Pass your component name dynamically based on the passed name
+
+      Tip:: Dynamic components are destroyed once not in use/lose focus. To
+      keep them around, you can wrap them with <keep-alive></keep-alive>
     -->
-    <component :is="selectedComponent"></component>
+    <keep-alive>
+      <component :is="selectedComponent"></component>
+    </keep-alive>
   </div>
 </template>
 
@@ -41,7 +46,7 @@ export default {
 
   data() {
     return {
-      selectedComponent:"active-goals",
+      selectedComponent: "active-goals",
       activeUser: {
         name: "Maximilian Schwarzmüller",
         description: "Site owner and admin",
