@@ -20,6 +20,29 @@ const store = createStore({
     increment(state) {
       // Update current state
       state.counter++;
+    },
+
+    // @payload is the incoming dynamic data to update state
+    increase(state, payload) {
+      state.counter = state.counter + payload.value;
+    }
+  },
+
+  // Getters :: similar to computed properties but read data from store into
+  // individual components
+  getters: {
+    finalCounter(state) {
+      return state.counter * 2;
+    },
+
+    // @getters, second argument in an individual getter computed property which
+    // contains other getters. Useful incase current getter depends on another
+    // getter.
+    normalizedCounter(_, getters) {
+      const finalcounter = getters.finalCounter;
+      if (finalcounter < 0) return 0;
+      if (finalcounter >= 50) return 100 + '%';
+      return finalcounter;
     }
   }
 });
