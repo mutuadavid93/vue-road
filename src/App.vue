@@ -1,33 +1,33 @@
 <template>
-  <learning-survey></learning-survey>
-  <user-experiences></user-experiences>
+  <base-container title="Vuex">
+    <!-- Access state inside any component -->
+    <h2>{{ mycounter }}</h2>
+    <button @click="incrementCounter">Add 1</button>
+    <change-counter></change-counter>
+  </base-container>
 </template>
 
 <script>
-import LearningSurvey from './components/survey/LearningSurvey.vue';
-import UserExperiences from './components/survey/UserExperiences.vue';
+import BaseContainer from './components/BaseContainer.vue';
+import ChangeCounter from './components/ChangeCounter.vue';
 
 export default {
   components: {
-    LearningSurvey,
-    UserExperiences,
+    BaseContainer,ChangeCounter
   },
-  // data() {
-  //   return {
-  //     savedSurveyResults: [],
-  //   };
-  // },
-  // methods: {
-  //   storeSurvey(surveyData) {
-  //     const surveyResult = {
-  //       name: surveyData.userName,
-  //       rating: surveyData.rating,
-  //       id: new Date().toISOString(),
-  //     };
-  //     this.savedSurveyResults.push(surveyResult);
-  //     console.log(surveyResult);
-  //   },
-  // },
+  computed: {
+    mycounter() {
+      // Read state directly from store
+      return this.$store.state.counter;
+    }
+  },
+  methods: {
+    incrementCounter() {
+      // Component reaching out to a Mutation which will update the `counter`
+      // state in store
+      this.$store.commit('increment');
+    }
+  }
 };
 </script>
 
@@ -35,11 +35,9 @@ export default {
 * {
   box-sizing: border-box;
 }
-
 html {
   font-family: sans-serif;
 }
-
 body {
   margin: 0;
 }
