@@ -1,17 +1,12 @@
-import { createApp } from "vue";
+import { createApp } from 'vue';
 
-import App from "./App.vue";
-import BaseBadge from "./components/BaseBadge.vue";
-import BadgeCard from "./components/BadgeCard.vue";
+import BaseCard from './components/UI/BaseCard.vue';
+import BaseButton from './components/UI/BaseButton.vue';
+import App from './App.vue';
 
 const app = createApp(App);
 
-// Global components
-// You can use them anywhere in the components
-// Used where a component is used in multiple places e.g. Masterpage components
-app.component("base-badge", BaseBadge);
+app.component('base-card', BaseCard);
+app.component('base-button', BaseButton);
 
-// Slot components are also global components
-app.component("badge-card", BadgeCard);
-
-app.mount("#app");
+app.mount('#app');
