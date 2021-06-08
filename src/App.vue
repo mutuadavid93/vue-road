@@ -31,7 +31,10 @@ export default {
       // state in store
       // Commit takes in a second argument i.e. payload which will be passed to
       // the named mutation
-      this.$store.commit('increase', { value: 10 });
+      // this.$store.commit('increase', { value: 10 });
+      //
+      // Hint :: dispatch() has same signature as commit()
+      this.$store.dispatch('increase', { value: 10 });
     }
   }
 };

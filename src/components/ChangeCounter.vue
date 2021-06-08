@@ -6,9 +6,7 @@
 export default {
   methods: {
     addOne() {
-      // commit() :: store method which takes the name of mutation you
-      // desire to perform.
-      this.$store.commit('increment');
+      this.$store.dispatch('increment');
     }
   }
 };

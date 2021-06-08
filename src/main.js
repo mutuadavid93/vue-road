@@ -15,6 +15,7 @@ const store = createStore({
 
   // Mutations :: Methods to change/update the state inside a store.
   // Components reach out to mutations which do the magic updating state store
+  // NB :: Mutations are SYNCHRONOUS no async code!
   mutations: {
     // @state is the current state
     increment(state) {
@@ -43,6 +44,25 @@ const store = createStore({
       if (finalcounter < 0) return 0;
       if (finalcounter >= 50) return 100 + '%';
       return finalcounter;
+    }
+  },
+
+  // Actions :: methods that relay update-messages from components to Mutations
+  // to update state
+  actions: {
+    // Any ASYNC code should live inside below methods
+    // Tip :: use same name as the target mutation. But isn't a must they match
+    // @context contains juicy powers
+    increment(context) {
+      // Simulated async request
+      setTimeout(function() {
+        context.commit('increment'); // Invoke `increment` mutation
+      }, 2000);
+    },
+
+    // Receaving forwarded payload from a component
+    increase(context, forwardedPayload) {
+      context.commit('increase', forwardedPayload);
     }
   }
 });
