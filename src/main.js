@@ -9,7 +9,8 @@ const store = createStore({
   // state here is similar to data() in an individual component
   state() {
     return {
-      counter: 0
+      counter: 0,
+      isLoggedIn: false
     };
   },
 
@@ -26,6 +27,10 @@ const store = createStore({
     // @payload is the incoming dynamic data to update state
     increase(state, payload) {
       state.counter = state.counter + payload.value;
+    },
+
+    setAuth(state, payload) {
+      state.isLoggedIn = payload.isAuth;
     }
   },
 
@@ -44,6 +49,10 @@ const store = createStore({
       if (finalcounter < 0) return 0;
       if (finalcounter >= 50) return 100 + '%';
       return finalcounter;
+    },
+
+    isAuthenticated(state) {
+      return state.isLoggedIn;
     }
   },
 
@@ -63,6 +72,13 @@ const store = createStore({
     // Receaving forwarded payload from a component
     increase(context, forwardedPayload) {
       context.commit('increase', forwardedPayload);
+    },
+
+    login(context) {
+      context.commit('setAuth', { isAuth: true });
+    },
+    logout(context) {
+      context.commit('setAuth', { isAuth: false });
     }
   }
 });

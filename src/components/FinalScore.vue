@@ -1,15 +1,15 @@
 <template>
-  <h2>{{ finalcounter }}</h2>
+  <h2>{{ normalizedCounter }}</h2>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
   computed: {
-    finalcounter() {
-      // normalizedCounter is a Getter inside the store
-      // current state will be passed directly into it
-      return this.$store.getters.normalizedCounter;
-    }
+    // Grab a named getter from store
+    // Instead of drilling down into your store
+    ...mapGetters(['normalizedCounter'])
   }
 };
 </script>
