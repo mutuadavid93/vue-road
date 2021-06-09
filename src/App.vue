@@ -36,8 +36,8 @@ export default {
   computed: {
     ...mapGetters(['isAuthenticated']),
     mycounter() {
-      // Read state directly from store
-      return this.$store.state.counter;
+      // Read state store's module's getter
+      return this.$store.getters['numbers/finalCounter'];
     }
   },
   methods: {
@@ -52,7 +52,7 @@ export default {
     //   this.$store.dispatch('increase', { value: 10 });
     // }
 
-    ...mapActions(['increase'])
+    ...mapActions('numbers', ['increase'])
   }
 };
 </script>

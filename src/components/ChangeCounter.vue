@@ -17,7 +17,7 @@ export default {
     // Use mapActions to grab an action from store
     // Plot Twist :: Vue creates named methods automatically and merges them
     // into existing ones inside the `methods` property.
-    ...mapActions(['increment'])
+    ...mapActions('numbers', ['increment'])
   }
 };
 </script>

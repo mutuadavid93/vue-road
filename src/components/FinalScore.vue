@@ -9,7 +9,9 @@ export default {
   computed: {
     // Grab a named getter from store
     // Instead of drilling down into your store
-    ...mapGetters(['normalizedCounter'])
+    // 
+    // Access a getter off a namespaced module e.g. numbers
+    ...mapGetters('numbers',['normalizedCounter'])
   }
 };
 </script>

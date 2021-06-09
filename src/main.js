@@ -3,7 +3,12 @@ import { createStore } from 'vuex';
 
 import App from './App.vue';
 
+// NB :: all modules apart from root module are Local Modules
+// But incase you want to reach to root module state and getters you can pass
+// `rootState` and `rootGetters` after `getters` argument
 const counterModule = {
+  // Namespaces avoid module properties' name's clash in big applications.
+  namespaced:true,
   state() {
     return {
       counter: 0
@@ -55,6 +60,8 @@ const counterModule = {
 const store = createStore({
   // All modules will be merged into the root module
   modules: {
+    // NB :: `numbers` is the namespace of your module.
+    // Use this name to reach out to your namespaced module properties
     numbers: counterModule
   },
   // state here is similar to data() in an individual component

@@ -7,7 +7,7 @@ import { mapActions } from 'vuex';
 export default {
   methods: {
     // Using custom method names with  mapHelpers
-    ...mapActions({ addtwenty: 'increase' })
+    ...mapActions('numbers', { addtwenty: 'increase' })
   }
 };
 </script>
